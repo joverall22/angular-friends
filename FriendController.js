@@ -1,7 +1,21 @@
 friendsApp.controller('friendsCtrl', ['$scope', function ($scope) {
-    $scope.sort = '';
-    $scope.sortAcending = false;
+
+    $scope.friendsFilters = ['name', 'friend_count', 'city', 'state', 'country'];
+
+    $scope.sort = $scope.friendsFilters[0];
+
+    $scope.ascending = [{
+        'name': 'Ascending',
+        'value': false
+    }, {
+        'name': 'Descending',
+        'value': true
+
+    }];
+
+
     $scope.searchTerm = '';
+
     $scope.friends = [{
         "name": "Naishi Zhang",
         "pic_square": "https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-ash3\/t5\/174266_842841_1023237973_q.jpg",
