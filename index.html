@@ -18,21 +18,18 @@
         <form class="form-inline searchForm" role="form">
             <div class="form-group">
 
-                <input class="form-control" placeholder="Search Anything About Your Friends" ng-model="searchTerm">
-                <!-- The stuff below is For step 5....get rid of the one above if you wish-->
-
                 <input class="form-control" placeholder="Search Your Friends' Name" ng-model="searchTerm.name">
                 <input class="form-control" placeholder="Search Your Freinds' Location" ng-model="searchTerm.current_location">
 
 
-                <select class="input-medium" ng-model="sort" ng-options="filter for filter in friendsFilters"></select>
+                <select class="input-medium" ng-model="sort" ng-options="item.value as item.name for item in friendsFilters"></select>
 
-                <select class="input-medium" ng-model="sorted" ng-options="item.value as item.name for item in ascending"></select>
+                <select class="input-medium" ng-model="sortDirection" ng-options="item.value as item.name for item in ascending"></select>
             </div>
         </form>
 
         <ul>
-            <li ng-repeat="friend in friends | filter:searchTerm:strict | orderBy:sort:sorted" class=" friend">
+            <li ng-repeat="friend in friends | filter:searchTerm:strict | orderBy:sort:sortDirection" class=" friend">
                 <img class="profile-pic" src="" ng-src="{{friend.pic_square}}" />
                 <h3>{{friend.name}}</h3>
                 <div class="location">{{friend.current_location.city}}, {{friend.current_location.state}}, {{friend.current_location.country}}</div>
